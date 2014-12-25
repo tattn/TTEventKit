@@ -23,7 +23,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7r-N2-NnM" customClass="CalendarView" customModule="TTEventKit">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7r-N2-NnM" customClass="CalendarView" customModule="TTEventKit">
                                 <rect key="frame" x="0.0" y="64" width="600" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -34,6 +34,7 @@
                             <constraint firstItem="RM3-Ta-qtq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="BIr-Si-Hdc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="c7r-N2-NnM" secondAttribute="trailing" constant="-16" id="I0z-eI-AQb"/>
                             <constraint firstItem="c7r-N2-NnM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="hFD-8C-89C"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="c7r-N2-NnM" secondAttribute="bottom" constant="90" id="ldk-bt-XiH"/>
                             <constraint firstItem="c7r-N2-NnM" firstAttribute="top" secondItem="RM3-Ta-qtq" secondAttribute="bottom" constant="7.5" id="ns8-Tf-10d"/>
                         </constraints>
                     </view>

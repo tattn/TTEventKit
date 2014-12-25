@@ -19,6 +19,8 @@
 		4AF466931A492F0C0009BAE8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF466921A492F0C0009BAE8 /* Images.xcassets */; };
 		4AF466961A492F0C0009BAE8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AF466941A492F0C0009BAE8 /* LaunchScreen.xib */; };
 		4AF466A91A492FD10009BAE8 /* TTEventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF466611A492E260009BAE8 /* TTEventKit.framework */; };
+		4AF466AB1A4A7EEB0009BAE8 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AA1A4A7EEB0009BAE8 /* Month.swift */; };
+		4AF466AD1A4C7F970009BAE8 /* CalendarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		4AF466901A492F0C0009BAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4AF466921A492F0C0009BAE8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4AF466951A492F0C0009BAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		4AF466AA1A4A7EEB0009BAE8 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +104,13 @@
 		4AF466631A492E260009BAE8 /* TTEventKit */ = {
 			isa = PBXGroup;
 			children = (
+				4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */,
 				4AF4667D1A492E650009BAE8 /* CalendarDayView.swift */,
 				4AF4667E1A492E650009BAE8 /* CalendarMonthView.swift */,
 				4AF4667F1A492E650009BAE8 /* CalendarView.swift */,
-				4AF466661A492E260009BAE8 /* TTEventKit.h */,
+				4AF466AA1A4A7EEB0009BAE8 /* Month.swift */,
 				4AF466641A492E260009BAE8 /* Supporting Files */,
+				4AF466661A492E260009BAE8 /* TTEventKit.h */,
 			);
 			path = TTEventKit;
 			sourceTree = "<group>";
@@ -297,6 +303,8 @@
 				4AF466801A492E650009BAE8 /* CalendarDayView.swift in Sources */,
 				4AF466811A492E650009BAE8 /* CalendarMonthView.swift in Sources */,
 				4AF466821A492E650009BAE8 /* CalendarView.swift in Sources */,
+				4AF466AB1A4A7EEB0009BAE8 /* Month.swift in Sources */,
+				4AF466AD1A4C7F970009BAE8 /* CalendarConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,8 +19,8 @@ class ViewController: UIViewController, CalendarDelegate {
         
         calendarView.delegate = self
         
-        let year = calendarView.currentYear
-        let month = calendarView.currentMonth
+        let year = calendarView.current.year
+        let month = calendarView.current.month
         changedMonth(year, month: month)
     }
 
@@ -37,6 +37,11 @@ class ViewController: UIViewController, CalendarDelegate {
         let monthEn = ["January", "Febrary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
         
         header.text = "\(year) \(monthEn[month - 1])"
+        
+    }
+    
+    func selectedDay(dayView: CalendarDayView) {
+        
     }
 
 }

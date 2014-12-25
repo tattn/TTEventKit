@@ -9,10 +9,8 @@ import UIKit
 
 @IBDesignable public class CalendarView: UIView, UIScrollViewDelegate {
     
-    // 現在表示している日付
-    public var currentYear: Int = 1970
-    public var currentMonth: Int = 1
-    public var currentDay: Int = 1
+    // 現在表示している月
+    public var current: Month!
     
     // 各要素の表示領域
     var weekdayFrame: CGRect!
@@ -24,6 +22,16 @@ import UIKit
     // カレンダーのビュー
     var scrollView: UIScrollView!
     var monthViews = [CalendarMonthView]()
+    
+    // 選択している日にちのビュー
+    var selectedDayView: CalendarDayView?
+    
+    // カレンダーの設定クラス
+    private var _config = CalendarConfig()
+    
+    public var currentMonthView: CalendarMonthView {
+        return monthViews[1]
+    }
     
     // デリゲート
     @IBInspectable public var delegate: CalendarDelegate?
@@ -44,46 +52,36 @@ import UIKit
     
     // カレンダーの部品を生成します。
     func readyCalendar() {
-        // 背景色
-        backgroundColor = UIColor.whiteColor()
         
         // 曜日の表示
-        let weekStrs = ["日", "月", "火", "水", "木", "金", "土"]
-        for str in weekStrs {
+        for str in config.weekNotation {
             var label = makeLabel(str, frame: self.frame)
             addSubview(label)
             weekdayLabels.append(label)
         }
         // 土日の色を変える
-        weekdayLabels[0].textColor = UIColor.redColor()
-        weekdayLabels[6].textColor = UIColor.blueColor()
+        weekdayLabels[0].textColor = config.sundayColor
+        weekdayLabels[6].textColor = config.saturdayColor
         
         // 現在の日付を取得
-        let date = getCurrentDate()
-        currentYear = date.year
-        currentMonth = date.month
+        current = Month.today()
         
-        // 先月のカレンダーを生成
-        var prevDate = getPrevYearMonth()
-        monthViews.append(CalendarMonthView(frame: frame, year: prevDate.year, month: prevDate.month))
-        
-        // 今月のカレンダーを生成
-        monthViews.append(CalendarMonthView(frame: frame, year: currentYear, month: currentMonth))
-        
-        // 翌月のカレンダーを生成
-        var nextDate = getNextYearMonth()
-        monthViews.append(CalendarMonthView(frame: frame, year: nextDate.year, month: nextDate.month))
+        // 先月/今月/翌月のカレンダーを生成
+        monthViews.append(CalendarMonthView(frame: frame, month: current.prev()))
+        monthViews.append(CalendarMonthView(frame: frame, month: current))
+        monthViews.append(CalendarMonthView(frame: frame, month: current.next()))
         
         // カレンダーの表示
         scrollView = makeScrollView()
         for v in monthViews {
             scrollView.addSubview(v)
+            v.calendar = self
         }
         addSubview(scrollView)
         
         layoutSubviews()
         
-        delegate?.changedMonth(currentYear, month: currentMonth)
+        delegate?.changedMonth(current.year, month: current.month)
     }
     
     override public func layoutSubviews() {
@@ -101,27 +99,32 @@ import UIKit
         
         // カレンダーを調節
         scrollView.frame = calendarFrame
-        for v in monthViews {
-            v.frame = scrollView.bounds
-        }
         scrollView.contentSize.width = calendarFrame.width
         
         for v in monthViews {
+            v.frame = scrollView.bounds
             v.relayout()
         }
+        
         resetCalendarView()
         scrollView.contentOffset.y = monthViews[1].frame.minY
     }
     
     func resetCalendarView() {
+        // カレンダーの配置を調整
         var y: CGFloat = 0
         var offset: CGFloat = 0
         for v in monthViews {
             v.frame.origin.y = y
-            offset = v.lastWeekday == 7 ? 0 : v.dayHeight // 最後の週が土曜日で終わった時はカレンダーを重ねない
+            offset = v.lastWeekday == .Saturday ? 0 : v.dayHeight // 最後の週が土曜日で終わった時はカレンダーを重ねない
             y += v.frame.height - offset
         }
         scrollView.contentSize.height = y + offset
+        
+        // カレンダーの色を再設定
+        monthViews[0].backgroundColor = config.defaultBackgroundColor
+        monthViews[1].backgroundColor = config.currentBackgroundColor
+        monthViews[2].backgroundColor = config.defaultBackgroundColor
     }
     
     func makeLabel(text: NSString, frame: CGRect, font: UIFont = UIFont.systemFontOfSize(12)) -> UILabel {
@@ -130,8 +133,6 @@ import UIKit
         label.font = font
         label.textColor = UIColor.blackColor()
         label.textAlignment = NSTextAlignment.Center
-        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        label.numberOfLines = 0
         return label
     }
     
@@ -143,6 +144,15 @@ import UIKit
         scrollView.showsVerticalScrollIndicator = false
         scrollView.scrollsToTop = false
         return scrollView
+    }
+    
+    public var config: CalendarConfig {
+        get {
+            return _config
+        }
+        set {
+            _config = newValue
+        }
     }
     
 //=================================
@@ -160,80 +170,52 @@ import UIKit
     
     func showNextView () {
         scrollView.delegate = nil
-        (currentYear, currentMonth) = getNextYearMonth()
+        current = current.next()
         
         var offset = scrollView.contentOffset.y - monthViews[1].frame.minY
         
         (monthViews[1], monthViews[2]) = (monthViews[2], monthViews[1])
         (monthViews[2], monthViews[0]) = (monthViews[0], monthViews[2])
         
-        var nextDate = getNextYearMonth()
-        monthViews[2].setup(nextDate.year, month:nextDate.month)
+        monthViews[2].setup(current.next())
         
         resetCalendarView()
         scrollView.contentOffset.y = offset
         
-        delegate?.changedMonth(currentYear, month: currentMonth)
+        delegate?.changedMonth(current.year, month: current.month)
         scrollView.delegate = self
     }
     
     func showPrevView() {
         scrollView.delegate = nil
-        (currentYear, currentMonth) = getPrevYearMonth()
+        current = current.prev()
         
         (monthViews[1], monthViews[0]) = (monthViews[0], monthViews[1])
         (monthViews[0], monthViews[2]) = (monthViews[2], monthViews[0])
         
-        var prevDate = getPrevYearMonth()
-        monthViews[0].setup(prevDate.year, month: prevDate.month)
+        monthViews[0].setup(current.prev())
         
         resetCalendarView()
         scrollView.contentOffset.y = monthViews[1].frame.minY
         
-        delegate?.changedMonth(currentYear, month: currentMonth)
+        delegate?.changedMonth(current.year, month: current.month)
         scrollView.delegate = self
     }
 
 //=================================
-// Utility
+// Calendar Event
 //=================================
-    
-    // 今日の日付を取得
-    func getCurrentDate() -> (year: Int, month: Int, day: Int) {
-        let calendar = NSCalendar.currentCalendar()
-        let flags: NSCalendarUnit =
-            NSCalendarUnit.YearCalendarUnit |
-            NSCalendarUnit.MonthCalendarUnit |
-            NSCalendarUnit.DayCalendarUnit
-        let comps = calendar.components(flags, fromDate: NSDate())
-        return (comps.year, comps.month, comps.day)
+    func daySelected(dayView: CalendarDayView) {
+        selectedDayView?.unselect()
+        selectedDayView = dayView
     }
     
-    // 次の月の年月を取得
-    func getNextYearMonth() -> (year: Int, month: Int) {
-        var nextYear = currentYear
-        var nextMonth = currentMonth + 1
-        if nextMonth > 12 {
-            nextMonth = 1
-            nextYear++
-        }
-        return (nextYear, nextMonth)
-    }
-    
-    // 前の月の年月を取得
-    func getPrevYearMonth() -> (year: Int, month: Int) {
-        var prevYear = currentYear
-        var prevMonth = currentMonth - 1
-        if prevMonth < 1 {
-            prevMonth = 12
-            prevYear--
-        }
-        return (prevYear, prevMonth)
-    }
     
 }
 
 public protocol CalendarDelegate {
     
     func changedMonth(year: Int, month: Int) -> Void
+    
+    func selectedDay(dayView: CalendarDayView) -> Void
 }
