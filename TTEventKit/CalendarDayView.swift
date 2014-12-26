@@ -21,6 +21,9 @@ public class CalendarDayView: UIView {
     // 選択されているか否か
     var selected: Bool = false
     
+    // 今日か否か
+    var isToday: Bool = false
+    
     // カレンダー
     var calendar: CalendarView
     
@@ -65,16 +68,20 @@ public class CalendarDayView: UIView {
         if selected {
             calendar.config.selectDayBackgroundColor.setFill()
             frameLine.fill()
-//            let frame = CGRectMake(rect.minX, rect.minY, rect.width, dayLabel.frame.height)
-//            var roundRect = UIBezierPath(roundedRect: frame, cornerRadius: 4)
-//            
-//            UIColor.blueColor().setFill()
-//            roundRect.fill()
         }
+        
         
         var line = UIBezierPath()
         
         // 月の区切り線の描画
+        drawSeparator(line, rect: rect)
+        
+        // 枠の描画
+        drawFrame(frameLine)
+    }
+    
+    // 月の区切り線の描画
+    private func drawSeparator(line: UIBezierPath, rect: CGRect) {
         if day <= 7 {
             line.lineWidth = 3
             
@@ -90,14 +97,32 @@ public class CalendarDayView: UIView {
             
             line.stroke()
         }
-        
-        // 枠の描画
-        UIColor.grayColor().setStroke()
-        
-        frameLine.lineWidth = 0.3
-        frameLine.stroke()
     }
     
+    // 枠の描画
+    private func drawFrame(rectPath: UIBezierPath) {
+        if isToday {
+            // 今日であれば強調させる
+            calendar.config.todayColor.setStroke()
+            calendar.config.todayColor.setFill()
+            
+            let header = UIBezierPath(rect: dayLabel.frame)
+            header.fill()
+            
+            rectPath.lineWidth = 3
+            
+            dayLabel.textColor = UIColor.whiteColor()
+        }
+        else {
+            UIColor.grayColor().setStroke()
+            
+            rectPath.lineWidth = 0.3
+        }
+        
+        rectPath.stroke()
+    }
+    
+    // 選択する
     func select() {
         selected = true
         dayLabel.textColor = calendar.config.selectDayTextColor
@@ -106,11 +131,17 @@ public class CalendarDayView: UIView {
         setNeedsDisplay()
     }
     
+    // 選択を解除する
     func unselect() {
         selected = false
         dayLabel.textColor = calendar.config.defaultDayTextColor
         
         setNeedsDisplay()
+    }
+    
+    // 今日の日付として設定する
+    func setAsToday() {
+        isToday = true
     }
     
     

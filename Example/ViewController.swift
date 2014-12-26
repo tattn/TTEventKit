@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EventKit
 import TTEventKit
 
 class ViewController: UIViewController, CalendarDelegate {
@@ -22,6 +23,7 @@ class ViewController: UIViewController, CalendarDelegate {
         let year = calendarView.current.year
         let month = calendarView.current.month
         changedMonth(year, month: month)
+        
     }
 
     override func didReceiveMemoryWarning() {

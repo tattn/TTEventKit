@@ -2,7 +2,6 @@
 //  Date.swift
 //  TTEventKit
 //
-//  Created by Tanaka Tatsuya on 2014/12/24.
 //  Copyright (c) 2014年 tanakasan2525. All rights reserved.
 //
 
@@ -46,14 +45,14 @@ public class Month {
 //=================================
     
     // 今日の日付を取得
-    public class func today() -> Month {
+    public class func today() -> (month: Month, day: Int) {
         let calendar = NSCalendar.currentCalendar()
         let flags: NSCalendarUnit =
             NSCalendarUnit.YearCalendarUnit |
             NSCalendarUnit.MonthCalendarUnit |
             NSCalendarUnit.DayCalendarUnit
         let comps = calendar.components(flags, fromDate: NSDate())
-        return Month(year: comps.year, month: comps.month)
+        return (Month(year: comps.year, month: comps.month), comps.day)
     }
     
     // 次の月の日付を取得

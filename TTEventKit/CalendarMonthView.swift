@@ -26,6 +26,9 @@ public class CalendarMonthView: UIView {
     var firstWeekday:Weekday = .Sunday
     var lastWeekday:Weekday = .Sunday
     
+    // 日のビュー
+    var dayViews = [CalendarDayView]()
+    
     // カレンダー
     var calendar: CalendarView!
     
@@ -51,6 +54,7 @@ public class CalendarMonthView: UIView {
         for v in subviews as [UIView] {
             v.removeFromSuperview()
         }
+        dayViews.removeAll(keepCapacity: true)
         
         self.month = month
         
@@ -62,6 +66,7 @@ public class CalendarMonthView: UIView {
         // 行数の取得
         rows = Int(ceil(Float(length + firstWeekday.rawValue) / 7))
         
+        // 日のビューを生成
         for i in 0..<length {
             let week = firstWeekday.rawValue + i
             let x = CGFloat(week % 7) * dayWidth
@@ -70,7 +75,13 @@ public class CalendarMonthView: UIView {
             let frame = CGRectMake(x, y, dayWidth, dayHeight)
             let dayView = CalendarDayView(frame: frame, day: i + 1, weekday: firstWeekday + i, calendar: calendar)
             
+            dayViews.append(dayView)
             self.addSubview(dayView)
+        }
+        
+        // 今日の日付があれば強調
+        if month.month == calendar.today.month.month && month.year == calendar.today.month.year {
+            dayViews[calendar.today.day - 1].setAsToday()
         }
         
         // カレンダーサイズの調整

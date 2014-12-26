@@ -9,6 +9,9 @@ import UIKit
 
 @IBDesignable public class CalendarView: UIView, UIScrollViewDelegate {
     
+    // 今日の日付
+    public var today = (month: Month(), day: 1)
+    
     // 現在表示している月
     public var current: Month!
     
@@ -64,7 +67,8 @@ import UIKit
         weekdayLabels[6].textColor = config.saturdayColor
         
         // 現在の日付を取得
-        current = Month.today()
+        today = Month.today()
+        current = today.month
         
         // 先月/今月/翌月のカレンダーを生成
         monthViews.append(CalendarMonthView(frame: frame, month: current.prev()))
