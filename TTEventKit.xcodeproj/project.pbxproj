@@ -21,6 +21,9 @@
 		4AF466A91A492FD10009BAE8 /* TTEventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF466611A492E260009BAE8 /* TTEventKit.framework */; };
 		4AF466AB1A4A7EEB0009BAE8 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AA1A4A7EEB0009BAE8 /* Month.swift */; };
 		4AF466AD1A4C7F970009BAE8 /* CalendarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */; };
+		4AF466AF1A4DA9860009BAE8 /* EventDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AE1A4DA9860009BAE8 /* EventDB.swift */; };
+		4AF466B11A4E7DF00009BAE8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466B01A4E7DF00009BAE8 /* Date.swift */; };
+		4AF466B31A4E81BC0009BAE8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466B21A4E81BC0009BAE8 /* Globals.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,9 @@
 		4AF466951A492F0C0009BAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4AF466AA1A4A7EEB0009BAE8 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarConfig.swift; sourceTree = "<group>"; };
+		4AF466AE1A4DA9860009BAE8 /* EventDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDB.swift; sourceTree = "<group>"; };
+		4AF466B01A4E7DF00009BAE8 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		4AF466B21A4E81BC0009BAE8 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,10 +90,10 @@
 		4AF466571A492E260009BAE8 = {
 			isa = PBXGroup;
 			children = (
-				4AF466631A492E260009BAE8 /* TTEventKit */,
-				4AF466701A492E260009BAE8 /* TTEventKitTests */,
 				4AF466881A492F0C0009BAE8 /* Example */,
 				4AF466621A492E260009BAE8 /* Products */,
+				4AF466631A492E260009BAE8 /* TTEventKit */,
+				4AF466701A492E260009BAE8 /* TTEventKitTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,9 +114,12 @@
 				4AF4667D1A492E650009BAE8 /* CalendarDayView.swift */,
 				4AF4667E1A492E650009BAE8 /* CalendarMonthView.swift */,
 				4AF4667F1A492E650009BAE8 /* CalendarView.swift */,
+				4AF466AE1A4DA9860009BAE8 /* EventDB.swift */,
 				4AF466AA1A4A7EEB0009BAE8 /* Month.swift */,
 				4AF466641A492E260009BAE8 /* Supporting Files */,
 				4AF466661A492E260009BAE8 /* TTEventKit.h */,
+				4AF466B01A4E7DF00009BAE8 /* Date.swift */,
+				4AF466B21A4E81BC0009BAE8 /* Globals.swift */,
 			);
 			path = TTEventKit;
 			sourceTree = "<group>";
@@ -300,8 +309,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF466AF1A4DA9860009BAE8 /* EventDB.swift in Sources */,
 				4AF466801A492E650009BAE8 /* CalendarDayView.swift in Sources */,
+				4AF466B11A4E7DF00009BAE8 /* Date.swift in Sources */,
 				4AF466811A492E650009BAE8 /* CalendarMonthView.swift in Sources */,
+				4AF466B31A4E81BC0009BAE8 /* Globals.swift in Sources */,
 				4AF466821A492E650009BAE8 /* CalendarView.swift in Sources */,
 				4AF466AB1A4A7EEB0009BAE8 /* Month.swift in Sources */,
 				4AF466AD1A4C7F970009BAE8 /* CalendarConfig.swift in Sources */,

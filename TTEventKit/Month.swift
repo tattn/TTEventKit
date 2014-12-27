@@ -11,8 +11,7 @@ public class Month {
     public var year: Int
     public var month: Int
     
-    private lazy var nscalendar = NSCalendar.currentCalendar()
-    private var nsdate: NSDate!
+    public var nsdate: NSDate!
     
     public convenience init() {
         self.init(year: 1970, month: 1)
@@ -46,12 +45,11 @@ public class Month {
     
     // 今日の日付を取得
     public class func today() -> (month: Month, day: Int) {
-        let calendar = NSCalendar.currentCalendar()
         let flags: NSCalendarUnit =
             NSCalendarUnit.YearCalendarUnit |
             NSCalendarUnit.MonthCalendarUnit |
             NSCalendarUnit.DayCalendarUnit
-        let comps = calendar.components(flags, fromDate: NSDate())
+        let comps = nscalendar.components(flags, fromDate: NSDate())
         return (Month(year: comps.year, month: comps.month), comps.day)
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EventKit
 
 public class CalendarDayView: UIView {
     
@@ -17,6 +18,10 @@ public class CalendarDayView: UIView {
     
     // 日にちのラベル
     var dayLabel: UILabel!
+    
+    // イベントのラベル
+    var events = [EKEvent]()
+//    var eventLabels = [UILabel]()
     
     // 選択されているか否か
     var selected: Bool = false
@@ -70,7 +75,6 @@ public class CalendarDayView: UIView {
             frameLine.fill()
         }
         
-        
         var line = UIBezierPath()
         
         // 月の区切り線の描画
@@ -78,6 +82,9 @@ public class CalendarDayView: UIView {
         
         // 枠の描画
         drawFrame(frameLine)
+        
+        // 予定の描画
+        drawPlan(rect)
     }
     
     // 月の区切り線の描画
@@ -122,11 +129,30 @@ public class CalendarDayView: UIView {
         rectPath.stroke()
     }
     
+    // 予定の描画
+    private func drawPlan(rect: CGRect) {
+        
+        let minX = rect.minX + 2
+        let minY = rect.minY + dayLabel.frame.height + 2
+        
+        let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(10)]
+        
+        var y = minY
+        for i in 0..<events.count {
+            let str = events[i].title as NSString
+            let pt = CGPointMake(minX, y)
+            str.drawAtPoint(pt, withAttributes: attributes)
+            
+            let size = str.sizeWithAttributes(attributes)
+            y += size.height
+        }
+    }
+    
     // 選択する
     func select() {
-        selected = true
         dayLabel.textColor = calendar.config.selectDayTextColor
         calendar.daySelected(self)
+        selected = true
         
         setNeedsDisplay()
     }
@@ -145,10 +171,21 @@ public class CalendarDayView: UIView {
     }
     
     
+    // イベントを追加する
+    func addEvent(event: EKEvent) {
+//        var label = UILabel(frame: bounds)
+//        label.text = event.title
+//        label.font = UIFont.systemFontOfSize(10)
+//        addSubview(label)
+        events.append(event)
+    }
+    
 //=================================
 // Touches
 //=================================
     override public func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesEnded(touches, withEvent: event)
+        
         let monthView = superview as CalendarMonthView
         
         println("\(monthView.month.year) \(monthView.month.month) \(dayLabel.text)")

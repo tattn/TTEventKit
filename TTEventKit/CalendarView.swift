@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EventKit
 
 @IBDesignable public class CalendarView: UIView, UIScrollViewDelegate {
     
@@ -31,6 +32,9 @@ import UIKit
     
     // カレンダーの設定クラス
     private var _config = CalendarConfig()
+    
+    // カレンダーに追加したイベント
+    var calEvents = [EKEvent]()
     
     public var currentMonthView: CalendarMonthView {
         return monthViews[1]
@@ -214,6 +218,22 @@ import UIKit
         selectedDayView = dayView
     }
     
+    
+//=================================
+// Calendar Operation
+//=================================
+    
+    // カレンダーにイベントを追加します
+    func addEvent(event: EKEvent) {
+        calEvents.append(event)
+    }
+    
+    // カレンダーにイベントを追加します
+    func addEvents(events: [EKEvent]) {
+        for e in events {
+            addEvent(e)
+        }
+    }
     
 }
 

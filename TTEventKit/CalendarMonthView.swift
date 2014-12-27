@@ -84,6 +84,16 @@ public class CalendarMonthView: UIView {
             dayViews[calendar.today.day - 1].setAsToday()
         }
         
+        // 予定を表示
+        if let ev = EventDB.getEvents(month) {
+            let planFrame = CGRectMake(frame.minX, frame.minY, frame.width, frame.height)
+            for e in ev {
+                let date = e.startDate.getYearMonthDay()
+                dayViews[date.day - 1].addEvent(e)
+            }
+        }
+        
+        
         // カレンダーサイズの調整
         sizeToFit()
         
@@ -97,6 +107,15 @@ public class CalendarMonthView: UIView {
     
     func viewHeight() -> CGFloat {
         return dayHeight * CGFloat(rows)
+    }
+    
+    // サブビューのみにタッチイベントを伝える
+    public override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, withEvent: event)
+        if view == self {
+            return nil
+        }
+        return view
     }
     
     

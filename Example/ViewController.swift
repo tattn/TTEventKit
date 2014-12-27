@@ -24,6 +24,28 @@ class ViewController: UIViewController, CalendarDelegate {
         let month = calendarView.current.month
         changedMonth(year, month: month)
         
+        EventDB.requestAccess() { (granted) in
+            if !granted {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let alert = UIAlertView(title: "エラー", message: "カレンダーへのアクセスを許可してください。", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK")
+                    alert.show()
+                    
+                }
+            }
+        }
+        
+        let ev = EventDB.getEvents(Month(year: 2014, month: 12))
+        
+        if ev  != nil {
+            for e in ev {
+                println("Title \(e.title)")
+                println("startDate: \(e.startDate)")
+                println("endDate: \(e.endDate)")
+                
+                
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
