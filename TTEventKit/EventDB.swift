@@ -13,6 +13,7 @@ public struct EventDB {
     
     private static var store = EKEventStore()
     
+    /// カレンダーへのアクセス許可を要求します
     public static func requestAccess() {
         requestAccess() { (granted) in
             dispatch_async(dispatch_get_main_queue()) {
@@ -23,12 +24,14 @@ public struct EventDB {
         }
     }
     
+    /// カレンダーへのアクセス許可を要求します
     public static func requestAccess(completion: (granted: Bool) -> Void) {
         store.requestAccessToEntityType(EKEntityTypeEvent) { (granted, error) in
             completion(granted: granted)
         }
     }
     
+    /// カレンダーからイベントを取得します。
     public static func getEvents(month: Month) -> [EKEvent]! {
         
         let len = Double(month.length())
@@ -38,6 +41,24 @@ public struct EventDB {
         let predicate = store.predicateForEventsWithStartDate(start, endDate: end, calendars: nil)
         
         return store.eventsMatchingPredicate(predicate) as [EKEvent]!
+    }
+    
+    /// カレンダーにイベントを追加します。
+    public static func addEvent(title: String, notes: String,
+                                startDate: NSDate = NSDate(), endDate:NSDate = NSDate()) {
+        var event = EKEvent(eventStore: store)
+        event.title = title
+        event.startDate = startDate
+        event.endDate = endDate
+        event.notes = notes
+        addEvent(event)
+    }
+    
+    /// カレンダーにイベントを追加します。
+    public static func addEvent(event: EKEvent) {
+        event.calendar = store.defaultCalendarForNewEvents
+        store.saveEvent(event, span: EKSpanThisEvent, error: nil)
+        println("Saved Event")
     }
     
 }

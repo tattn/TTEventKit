@@ -9,27 +9,27 @@ import UIKit
 
 public class CalendarMonthView: UIView {
     
-    // セルのサイズ
+    /// セルのサイズ
     var dayWidth: CGFloat = 0
     var dayHeight: CGFloat = 0
     
-    // 行
+    /// 行
     var rows: Int = 0
     
-    // このビューが表示している月
+    /// このビューが表示している月
     var month: Month!
     
-    // 何日まであるか
+    /// 何日まであるか
     var length: Int = 0
     
-    // 最初と最後の曜日
+    /// 最初と最後の曜日
     var firstWeekday:Weekday = .Sunday
     var lastWeekday:Weekday = .Sunday
     
-    // 日のビュー
+    /// 日のビュー
     var dayViews = [CalendarDayView]()
     
-    // カレンダー
+    /// カレンダー
     var calendar: CalendarView!
     
     required public init(coder aDecoder: NSCoder) {
@@ -84,7 +84,7 @@ public class CalendarMonthView: UIView {
             dayViews[calendar.today.day - 1].setAsToday()
         }
         
-        // 予定を表示
+        // 予定を取得して追加
         if let ev = EventDB.getEvents(month) {
             let planFrame = CGRectMake(frame.minX, frame.minY, frame.width, frame.height)
             for e in ev {

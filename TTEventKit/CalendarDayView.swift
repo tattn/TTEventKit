@@ -10,26 +10,25 @@ import EventKit
 
 public class CalendarDayView: UIView {
     
-    // 日にち
+    /// 日にち
     var day: Int
     
-    // 曜日
+    /// 曜日
     var weekday: Weekday
     
-    // 日にちのラベル
+    /// 日にちのラベル
     var dayLabel: UILabel!
     
-    // イベントのラベル
+    /// 登録されているイベント
     var events = [EKEvent]()
-//    var eventLabels = [UILabel]()
     
-    // 選択されているか否か
+    /// 選択されているか否か
     var selected: Bool = false
     
-    // 今日か否か
+    /// 今日か否か
     var isToday: Bool = false
     
-    // カレンダー
+    /// カレンダー
     var calendar: CalendarView
     
 //=================================
@@ -173,10 +172,6 @@ public class CalendarDayView: UIView {
     
     // イベントを追加する
     func addEvent(event: EKEvent) {
-//        var label = UILabel(frame: bounds)
-//        label.text = event.title
-//        label.font = UIFont.systemFontOfSize(10)
-//        addSubview(label)
         events.append(event)
     }
     

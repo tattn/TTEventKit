@@ -34,6 +34,9 @@ class ViewController: UIViewController, CalendarDelegate {
             }
         }
         
+        let startDate = Month(year: 2015, month: 1).nsdate
+        EventDB.addEvent("元旦", notes: "元旦だよ", startDate: startDate, endDate: startDate)
+        
         let ev = EventDB.getEvents(Month(year: 2014, month: 12))
         
         if ev  != nil {
