@@ -31,6 +31,19 @@ if events  != nil {
 }
 ```
 
+### Removing calendar events
+
+```swift
+
+EventDB.removeEvents(Month(year: 2015, month: 1))
+
+EventDB.removeEvents(Month(year: 2015, month: 1), day: 1)
+
+// remove events from 1/5/2015 to 1/19/2015
+EventDB.removeEvents(Month(year: 2015, month: 1), day: 5, length: 15)
+```
+
+
 ## Contributing
 
 1. Fork it!

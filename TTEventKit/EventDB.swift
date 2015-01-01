@@ -31,21 +31,46 @@ public struct EventDB {
         }
     }
     
+//=================================
+// Get
+//=================================
+    
+    /// カレンダーからイベントを取得します。
+    public static func getEvents(year: Int, month: Int) -> [EKEvent]! {
+        return getEvents(Month(year: year, month: month))
+    }
+    
     /// カレンダーからイベントを取得します。
     public static func getEvents(month: Month) -> [EKEvent]! {
         
-        let len = Double(month.length())
-        let start = month.nsdate
-        let end = start.dateByAddingTimeInterval(60*60*24*len)
+        let len = month.length()
         
-        let predicate = store.predicateForEventsWithStartDate(start, endDate: end, calendars: nil)
+        return getEvents(month, day: 1, length: len)
+    }
+    
+    /// カレンダーからイベントを取得します。
+    public static func getEvents(month: Month, day: Int, length: Int = 1) -> [EKEvent]! {
+        
+        let start = month.nsdate.dateByAddingTimeInterval(60*60*24*Double(day - 1))
+        let end = start.dateByAddingTimeInterval(60*60*24*Double(length))
+        
+        return getEvents(start, endDate: end)
+    }
+    
+    /// カレンダーからイベントを取得します。
+    public static func getEvents(startDate: NSDate, endDate: NSDate) -> [EKEvent]! {
+        let predicate = store.predicateForEventsWithStartDate(startDate, endDate: endDate, calendars: nil)
         
         return store.eventsMatchingPredicate(predicate) as [EKEvent]!
     }
     
+//=================================
+// Add
+//=================================
+    
     /// カレンダーにイベントを追加します。
     public static func addEvent(title: String, notes: String,
-                                startDate: NSDate = NSDate(), endDate:NSDate = NSDate()) {
+                                startDate: NSDate = NSDate(), endDate: NSDate = NSDate()) {
         var event = EKEvent(eventStore: store)
         event.title = title
         event.startDate = startDate
@@ -58,7 +83,43 @@ public struct EventDB {
     public static func addEvent(event: EKEvent) {
         event.calendar = store.defaultCalendarForNewEvents
         store.saveEvent(event, span: EKSpanThisEvent, error: nil)
-        println("Saved Event")
     }
+    
+//=================================
+// Remove
+//=================================
+    
+    /// カレンダーからイベントを削除します。
+    public static func removeEvents(startDate: NSDate, endDate: NSDate) {
+        let events = getEvents(startDate, endDate: endDate)
+        removeEvents(events)
+    }
+    
+    /// カレンダーからイベントを削除します。
+    public static func removeEvents(month: Month) {
+        let events = getEvents(month)
+        removeEvents(events)
+    }
+    
+    /// カレンダーからイベントを削除します。
+    public static func removeEvents(month: Month, day: Int, length: Int = 1) {
+        let events = getEvents(month, day: day, length: length)
+        removeEvents(events)
+    }
+    
+    /// カレンダーからイベントを削除します。
+    public static func removeEvents(events: [EKEvent]!) {
+        if events != nil {
+            for event in events {
+                removeEvent(event)
+            }
+        }
+    }
+    
+    /// カレンダーからイベントを削除します。
+    public static func removeEvent(event: EKEvent) {
+        store.removeEvent(event, span: EKSpanThisEvent, error: nil)
+    }
+    
     
 }

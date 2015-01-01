@@ -22,7 +22,6 @@
 		4AF466AB1A4A7EEB0009BAE8 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AA1A4A7EEB0009BAE8 /* Month.swift */; };
 		4AF466AD1A4C7F970009BAE8 /* CalendarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */; };
 		4AF466AF1A4DA9860009BAE8 /* EventDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AE1A4DA9860009BAE8 /* EventDB.swift */; };
-		4AF466B11A4E7DF00009BAE8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466B01A4E7DF00009BAE8 /* Date.swift */; };
 		4AF466B31A4E81BC0009BAE8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466B21A4E81BC0009BAE8 /* Globals.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +55,6 @@
 		4AF466AA1A4A7EEB0009BAE8 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarConfig.swift; sourceTree = "<group>"; };
 		4AF466AE1A4DA9860009BAE8 /* EventDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDB.swift; sourceTree = "<group>"; };
-		4AF466B01A4E7DF00009BAE8 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		4AF466B21A4E81BC0009BAE8 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,7 +116,6 @@
 				4AF466AA1A4A7EEB0009BAE8 /* Month.swift */,
 				4AF466641A492E260009BAE8 /* Supporting Files */,
 				4AF466661A492E260009BAE8 /* TTEventKit.h */,
-				4AF466B01A4E7DF00009BAE8 /* Date.swift */,
 				4AF466B21A4E81BC0009BAE8 /* Globals.swift */,
 			);
 			path = TTEventKit;
@@ -311,7 +308,6 @@
 			files = (
 				4AF466AF1A4DA9860009BAE8 /* EventDB.swift in Sources */,
 				4AF466801A492E650009BAE8 /* CalendarDayView.swift in Sources */,
-				4AF466B11A4E7DF00009BAE8 /* Date.swift in Sources */,
 				4AF466811A492E650009BAE8 /* CalendarMonthView.swift in Sources */,
 				4AF466B31A4E81BC0009BAE8 /* Globals.swift in Sources */,
 				4AF466821A492E650009BAE8 /* CalendarView.swift in Sources */,

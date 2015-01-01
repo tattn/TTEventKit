@@ -34,6 +34,8 @@ class ViewController: UIViewController, CalendarDelegate {
             }
         }
         
+        EventDB.removeEvents(Month(year: 2015, month: 1), day: 1)
+        
         let ev = EventDB.getEvents(Month(year: 2014, month: 12))
         
         if ev  != nil {
@@ -41,8 +43,6 @@ class ViewController: UIViewController, CalendarDelegate {
                 println("Title \(e.title)")
                 println("startDate: \(e.startDate)")
                 println("endDate: \(e.endDate)")
-                
-                
             }
         }
         
