@@ -31,6 +31,12 @@ if events  != nil {
 }
 ```
 
+### Adding calendar events
+
+```swift
+EventDB.addEvent("new event", notes: "This is a test", startDate: NSDate(), endDate: NSDate())
+```
+
 ### Removing calendar events
 
 ```swift
@@ -43,6 +49,22 @@ EventDB.removeEvents(Month(year: 2015, month: 1), day: 1)
 EventDB.removeEvents(Month(year: 2015, month: 1), day: 5, length: 15)
 ```
 
+### Showing an edit view
+
+```swift
+EventUI.showEditView()
+
+// preset
+let event = EventDB.create()
+event.title = "new event"
+event.notes = "memo"
+EventUI.showEditView(event)
+
+// update
+let month = Month(year: 2015, month: 10)
+let event2 = EventDB.getEvents(month, day: 1)[0]
+EventUI.showEditView(event2)
+```
 
 ## Contributing
 
