@@ -13,7 +13,7 @@ class ViewController: UIViewController, CalendarDelegate {
     
     @IBOutlet weak var calendarView: CalendarView!
 
-    @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var header: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,6 @@ class ViewController: UIViewController, CalendarDelegate {
             }
         }
         
-        EventDB.removeEvents(Month(year: 2015, month: 1), day: 1)
         
         let ev = EventDB.getEvents(Month(year: 2014, month: 12))
         
@@ -52,6 +51,15 @@ class ViewController: UIViewController, CalendarDelegate {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func tappedAddButton(sender: UIBarButtonItem) {
+        
+        let event = EventDB.create()
+        event.title = "元旦"
+        event.startDate = Month(year: 2015, month: 1).nsdate
+        event.endDate = event.startDate
+        event.notes = "メモ"
+        EventUI.showEditView(event)
+    }
     
 //=================================
 // Calendar Delegate
@@ -60,7 +68,7 @@ class ViewController: UIViewController, CalendarDelegate {
     func changedMonth(year: Int, month: Int) {
         let monthEn = ["January", "Febrary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
         
-        header.text = "\(year) \(monthEn[month - 1])"
+        header.title = "\(year) \(monthEn[month - 1])"
         
     }
     

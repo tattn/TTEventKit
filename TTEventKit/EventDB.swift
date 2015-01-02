@@ -11,7 +11,7 @@ import EventKit
 
 public struct EventDB {
     
-    private static var store = EKEventStore()
+    public static var store = EKEventStore()
     
     /// カレンダーへのアクセス許可を要求します
     public static func requestAccess() {
@@ -121,5 +121,13 @@ public struct EventDB {
         store.removeEvent(event, span: EKSpanThisEvent, error: nil)
     }
     
+    
+//=================================
+// Utility
+//=================================
+    
+    public static func create() -> EKEvent {
+        return EKEvent(eventStore: store)
+    }
     
 }
