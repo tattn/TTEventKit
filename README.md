@@ -1,4 +1,7 @@
 # TTEventKit
+===
+
+A convenient event kit written by Swift.
 
 ## Installation
 
@@ -22,7 +25,7 @@ EventDB.requestAccess() { (granted) in
 ```swift
 let events = EventDB.getEvents(Month(year: 2015, month: 1))
 
-if events  != nil {
+if events != nil {
     for e in events {
         println("Title \(e.title)")
         println("startDate: \(e.startDate)")
@@ -49,7 +52,7 @@ EventDB.removeEvents(Month(year: 2015, month: 1), day: 1)
 EventDB.removeEvents(Month(year: 2015, month: 1), day: 5, length: 15)
 ```
 
-### Showing an edit view
+### Showing the view to edit an event
 
 ```swift
 EventUI.showEditView()
