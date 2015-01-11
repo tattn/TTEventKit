@@ -118,6 +118,7 @@ public class CalendarDayView: UIView {
             rectPath.lineWidth = 3
             
             dayLabel.textColor = UIColor.whiteColor()
+            rectPath.stroke()
         }
         else {
             UIColor.grayColor().setStroke()

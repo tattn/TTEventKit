@@ -1,10 +1,25 @@
 # TTEventKit
-===
 
 A convenient event kit written by Swift.
 
+<a target="_blank" href="https://raw.githubusercontent.com/tanakasan2525/TTEventKit/assets/calendar_anime.gif">
+<img width="30%" height="30%" alt="Calendar" src="https://raw.githubusercontent.com/tanakasan2525/TTEventKit/assets/calendar_anime.gif"></a>
+
+[Calendar](https://raw.githubusercontent.com/tanakasan2525/TTEventKit/assets/calendar.png)
+
 ## Installation
 
+Using TTEventKit in your project requires the following steps:
+
+In your top-level project directory, enter this:
+```bash
+git submodule add https://github.com/tanakasan2525/TTEventKit.git
+```
+2. Open the `TTEventKit` folder, and drag `TTEventKit.xcodeproj` into the project navigator of your project.
+3. Select the project file from the project navigator, and select the target for where you want to add frameworks.
+4. Select the "Build Phases" tab, and add `TTEventKit.framework` to "Link Binary With Libraries".
+5. Click on the "+" button at the top left of the panel and select "New Copy Files Phase".
+6. Open the "Copy Files", and set the "Destination" to "Frameworks", and add `TTEventKit.framework`.
 
 ## Usage
 
@@ -55,6 +70,7 @@ EventDB.removeEvents(Month(year: 2015, month: 1), day: 5, length: 15)
 ### Showing the view to edit an event
 
 ```swift
+// simple
 EventUI.showEditView()
 
 // preset

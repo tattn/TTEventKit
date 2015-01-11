@@ -44,7 +44,7 @@ public class CalendarMonthView: UIView {
     
     func relayout() {
         dayWidth = frame.width / 7
-        dayHeight = superview!.frame.height / 7
+        dayHeight = superview!.frame.height / 6
         
         setup(month)
     }

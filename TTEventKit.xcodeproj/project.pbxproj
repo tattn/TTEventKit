@@ -26,6 +26,17 @@
 		4AF466B51A55B3490009BAE8 /* EventUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466B41A55B3490009BAE8 /* EventUI.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		4AF466B61A5B0FDE0009BAE8 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		4AF4666E1A492E260009BAE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -194,6 +205,7 @@
 				4AF4665F1A492E260009BAE8 /* Resources */,
 			);
 			buildRules = (
+				4AF466B61A5B0FDE0009BAE8 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -384,7 +396,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -408,6 +420,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -430,7 +443,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_NS_ASSERTIONS = NO;

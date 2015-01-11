@@ -16,10 +16,6 @@ import EventKit
     // 現在表示している月
     public var current: Month!
     
-    // 各要素の表示領域
-    var weekdayFrame: CGRect!
-    var calendarFrame: CGRect!
-    
     // 曜日を表示するラベル
     var weekdayLabels = [UILabel]()
     
@@ -60,9 +56,16 @@ import EventKit
     // カレンダーの部品を生成します。
     func readyCalendar() {
         
+//        backgroundColor = UIColor(red: 0.6, green: 0.7, blue: 1.0, alpha: 1.0)
+        
         // 曜日の表示
         for str in config.weekNotation {
-            var label = makeLabel(str, frame: self.frame)
+            var label = makeLabel(str)
+//            label.backgroundColor = UIColor.whiteColor()
+//            label.layer.masksToBounds = false
+//            label.layer.shadowOffset = CGSizeMake(5.0, 5.0)
+//            label.layer.shadowOpacity = 0.7
+//            label.layer.shadowColor = UIColor.blackColor().CGColor
             addSubview(label)
             weekdayLabels.append(label)
         }
@@ -95,19 +98,16 @@ import EventKit
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        weekdayFrame = CGRectMake(0, 0, frame.width, 20)
-        calendarFrame = CGRectMake(0, 40, frame.width, frame.height - 60)
-        
         // 曜日の調整
-        let y = self.weekdayFrame.minY
-        let w = self.weekdayFrame.width / 7
-        for i in 0..<self.weekdayLabels.count {
-            self.weekdayLabels[i].frame = CGRectMake(CGFloat(i) * w, y, w, w)
+        let weekW = frame.width / 7
+        let weekH: CGFloat = 16
+        for i in 0..<weekdayLabels.count {
+            weekdayLabels[i].frame = CGRectMake(CGFloat(i) * weekW, 0, weekW, weekH)
         }
         
         // カレンダーを調節
-        scrollView.frame = calendarFrame
-        scrollView.contentSize.width = calendarFrame.width
+        scrollView.frame = CGRectMake(0, weekH + 1, frame.width, frame.height - weekH)
+        scrollView.contentSize.width = scrollView.frame.width
         
         for v in monthViews {
             v.frame = scrollView.bounds
@@ -135,8 +135,8 @@ import EventKit
         monthViews[2].backgroundColor = config.defaultBackgroundColor
     }
     
-    func makeLabel(text: NSString, frame: CGRect, font: UIFont = UIFont.systemFontOfSize(12)) -> UILabel {
-        var label = UILabel(frame: frame)
+    func makeLabel(text: NSString, font: UIFont = UIFont.systemFontOfSize(12)) -> UILabel {
+        var label = UILabel()
         label.text = text
         label.font = font
         label.textColor = UIColor.blackColor()
@@ -167,11 +167,12 @@ import EventKit
 // UIScrollViewDelegate
 //=================================
     public func scrollViewDidScroll(scrollView: UIScrollView) {
-        var y = scrollView.contentOffset.y
-        if y + scrollView.frame.height >= scrollView.contentSize.height {
+        let y = scrollView.contentOffset.y
+        let dayH = monthViews[0].dayHeight
+        if y + scrollView.frame.height >= scrollView.contentSize.height - dayH {
             showNextView()
         }
-        else if y <= 0 {
+        else if y <= dayH {
             showPrevView()
         }
     }
@@ -204,7 +205,7 @@ import EventKit
         monthViews[0].setup(current.prev())
         
         resetCalendarView()
-        scrollView.contentOffset.y = monthViews[1].frame.minY
+        scrollView.contentOffset.y = monthViews[1].frame.minY + monthViews[1].dayHeight
         
         delegate?.changedMonth(current.year, month: current.month)
         scrollView.delegate = self
