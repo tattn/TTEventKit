@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4AF466671A492E260009BAE8 /* TTEventKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AF466661A492E260009BAE8 /* TTEventKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4AF4666D1A492E260009BAE8 /* TTEventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF466611A492E260009BAE8 /* TTEventKit.framework */; };
-		4AF466741A492E260009BAE8 /* TTEventKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466731A492E260009BAE8 /* TTEventKitTests.swift */; };
 		4AF466801A492E650009BAE8 /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4667D1A492E650009BAE8 /* CalendarDayView.swift */; };
 		4AF466811A492E650009BAE8 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4667E1A492E650009BAE8 /* CalendarMonthView.swift */; };
 		4AF466821A492E650009BAE8 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4667F1A492E650009BAE8 /* CalendarView.swift */; };
@@ -21,7 +19,7 @@
 		4AF466A91A492FD10009BAE8 /* TTEventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF466611A492E260009BAE8 /* TTEventKit.framework */; };
 		4AF466AB1A4A7EEB0009BAE8 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AA1A4A7EEB0009BAE8 /* Month.swift */; };
 		4AF466AD1A4C7F970009BAE8 /* CalendarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */; };
-		4AF466AF1A4DA9860009BAE8 /* EventDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AE1A4DA9860009BAE8 /* EventDB.swift */; };
+		4AF466AF1A4DA9860009BAE8 /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466AE1A4DA9860009BAE8 /* EventStore.swift */; };
 		4AF466B31A4E81BC0009BAE8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466B21A4E81BC0009BAE8 /* Globals.swift */; };
 		4AF466B51A55B3490009BAE8 /* EventUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF466B41A55B3490009BAE8 /* EventUI.swift */; };
 /* End PBXBuildFile section */
@@ -37,23 +35,10 @@
 		};
 /* End PBXBuildRule section */
 
-/* Begin PBXContainerItemProxy section */
-		4AF4666E1A492E260009BAE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AF466581A492E260009BAE8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4AF466601A492E260009BAE8;
-			remoteInfo = TTEventKit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		4AF466611A492E260009BAE8 /* TTEventKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTEventKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF466651A492E260009BAE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AF466661A492E260009BAE8 /* TTEventKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTEventKit.h; sourceTree = "<group>"; };
-		4AF4666C1A492E260009BAE8 /* TTEventKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TTEventKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AF466721A492E260009BAE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4AF466731A492E260009BAE8 /* TTEventKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTEventKitTests.swift; sourceTree = "<group>"; };
 		4AF4667D1A492E650009BAE8 /* CalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
 		4AF4667E1A492E650009BAE8 /* CalendarMonthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
 		4AF4667F1A492E650009BAE8 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -66,7 +51,7 @@
 		4AF466951A492F0C0009BAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4AF466AA1A4A7EEB0009BAE8 /* Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarConfig.swift; sourceTree = "<group>"; };
-		4AF466AE1A4DA9860009BAE8 /* EventDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDB.swift; sourceTree = "<group>"; };
+		4AF466AE1A4DA9860009BAE8 /* EventStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
 		4AF466B21A4E81BC0009BAE8 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		4AF466B41A55B3490009BAE8 /* EventUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,14 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4AF466691A492E260009BAE8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4AF4666D1A492E260009BAE8 /* TTEventKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,13 +75,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A27AF081BC6DA08009BDCF4 /* TTEventKit */ = {
+			isa = PBXGroup;
+			children = (
+				4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */,
+				4AF4667D1A492E650009BAE8 /* CalendarDayView.swift */,
+				4AF4667E1A492E650009BAE8 /* CalendarMonthView.swift */,
+				4AF4667F1A492E650009BAE8 /* CalendarView.swift */,
+				4AF466AE1A4DA9860009BAE8 /* EventStore.swift */,
+				4AF466AA1A4A7EEB0009BAE8 /* Month.swift */,
+				4AF466661A492E260009BAE8 /* TTEventKit.h */,
+				4AF466B21A4E81BC0009BAE8 /* Globals.swift */,
+				4AF466B41A55B3490009BAE8 /* EventUI.swift */,
+			);
+			path = TTEventKit;
+			sourceTree = "<group>";
+		};
 		4AF466571A492E260009BAE8 = {
 			isa = PBXGroup;
 			children = (
-				4AF466881A492F0C0009BAE8 /* Example */,
 				4AF466621A492E260009BAE8 /* Products */,
 				4AF466631A492E260009BAE8 /* TTEventKit */,
-				4AF466701A492E260009BAE8 /* TTEventKitTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				4AF466611A492E260009BAE8 /* TTEventKit.framework */,
-				4AF4666C1A492E260009BAE8 /* TTEventKitTests.xctest */,
 				4AF466871A492F0C0009BAE8 /* Example.app */,
 			);
 			name = Products;
@@ -121,16 +111,9 @@
 		4AF466631A492E260009BAE8 /* TTEventKit */ = {
 			isa = PBXGroup;
 			children = (
-				4AF466AC1A4C7F970009BAE8 /* CalendarConfig.swift */,
-				4AF4667D1A492E650009BAE8 /* CalendarDayView.swift */,
-				4AF4667E1A492E650009BAE8 /* CalendarMonthView.swift */,
-				4AF4667F1A492E650009BAE8 /* CalendarView.swift */,
-				4AF466AE1A4DA9860009BAE8 /* EventDB.swift */,
-				4AF466AA1A4A7EEB0009BAE8 /* Month.swift */,
+				4AF466881A492F0C0009BAE8 /* Example */,
+				4A27AF081BC6DA08009BDCF4 /* TTEventKit */,
 				4AF466641A492E260009BAE8 /* Supporting Files */,
-				4AF466661A492E260009BAE8 /* TTEventKit.h */,
-				4AF466B21A4E81BC0009BAE8 /* Globals.swift */,
-				4AF466B41A55B3490009BAE8 /* EventUI.swift */,
 			);
 			path = TTEventKit;
 			sourceTree = "<group>";
@@ -139,23 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				4AF466651A492E260009BAE8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4AF466701A492E260009BAE8 /* TTEventKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				4AF466731A492E260009BAE8 /* TTEventKitTests.swift */,
-				4AF466711A492E260009BAE8 /* Supporting Files */,
-			);
-			path = TTEventKitTests;
-			sourceTree = "<group>";
-		};
-		4AF466711A492E260009BAE8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4AF466721A492E260009BAE8 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -214,24 +180,6 @@
 			productReference = 4AF466611A492E260009BAE8 /* TTEventKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4AF4666B1A492E260009BAE8 /* TTEventKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4AF4667A1A492E260009BAE8 /* Build configuration list for PBXNativeTarget "TTEventKitTests" */;
-			buildPhases = (
-				4AF466681A492E260009BAE8 /* Sources */,
-				4AF466691A492E260009BAE8 /* Frameworks */,
-				4AF4666A1A492E260009BAE8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4AF4666F1A492E260009BAE8 /* PBXTargetDependency */,
-			);
-			name = TTEventKitTests;
-			productName = TTEventKitTests;
-			productReference = 4AF4666C1A492E260009BAE8 /* TTEventKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		4AF466861A492F0C0009BAE8 /* Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4AF466A31A492F0C0009BAE8 /* Build configuration list for PBXNativeTarget "Example" */;
@@ -255,13 +203,12 @@
 		4AF466581A492E260009BAE8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = tanakasan2525;
 				TargetAttributes = {
 					4AF466601A492E260009BAE8 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
-					4AF4666B1A492E260009BAE8 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 					4AF466861A492F0C0009BAE8 = {
@@ -283,7 +230,6 @@
 			projectRoot = "";
 			targets = (
 				4AF466601A492E260009BAE8 /* TTEventKit */,
-				4AF4666B1A492E260009BAE8 /* TTEventKitTests */,
 				4AF466861A492F0C0009BAE8 /* Example */,
 			);
 		};
@@ -291,13 +237,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		4AF4665F1A492E260009BAE8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4AF4666A1A492E260009BAE8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,21 +261,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AF466B51A55B3490009BAE8 /* EventUI.swift in Sources */,
-				4AF466AF1A4DA9860009BAE8 /* EventDB.swift in Sources */,
+				4AF466AF1A4DA9860009BAE8 /* EventStore.swift in Sources */,
 				4AF466801A492E650009BAE8 /* CalendarDayView.swift in Sources */,
 				4AF466811A492E650009BAE8 /* CalendarMonthView.swift in Sources */,
 				4AF466B31A4E81BC0009BAE8 /* Globals.swift in Sources */,
 				4AF466821A492E650009BAE8 /* CalendarView.swift in Sources */,
 				4AF466AB1A4A7EEB0009BAE8 /* Month.swift in Sources */,
 				4AF466AD1A4C7F970009BAE8 /* CalendarConfig.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4AF466681A492E260009BAE8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4AF466741A492E260009BAE8 /* TTEventKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,14 +281,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4AF4666F1A492E260009BAE8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4AF466601A492E260009BAE8 /* TTEventKit */;
-			targetProxy = 4AF4666E1A492E260009BAE8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4AF4668F1A492F0C0009BAE8 /* Main.storyboard */ = {
@@ -400,6 +323,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -414,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -455,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,7 +399,9 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TTEventKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.tattn.TTEventKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -492,39 +418,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = TTEventKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.tattn.TTEventKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		4AF4667B1A492E260009BAE8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TTEventKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		4AF4667C1A492E260009BAE8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = TTEventKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -536,8 +434,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TTEventKit/Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.tattn.TTEventKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -546,8 +446,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TTEventKit/Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.tattn.TTEventKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -571,14 +473,7 @@
 				4AF466791A492E260009BAE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		4AF4667A1A492E260009BAE8 /* Build configuration list for PBXNativeTarget "TTEventKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4AF4667B1A492E260009BAE8 /* Debug */,
-				4AF4667C1A492E260009BAE8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4AF466A31A492F0C0009BAE8 /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
@@ -587,6 +482,7 @@
 				4AF466A51A492F0C0009BAE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

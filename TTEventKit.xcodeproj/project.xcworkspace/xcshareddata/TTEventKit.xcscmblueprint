@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "18EC1EA0336CBD9374285E89E7DF8527516B6822",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "18EC1EA0336CBD9374285E89E7DF8527516B6822" : 0,
+    "8D6AF3F0851A5FE85CDC21A835EF23FD2B119DF1" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B74D6C51-0D88-4F45-99B2-D2A5333D8C50",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "18EC1EA0336CBD9374285E89E7DF8527516B6822" : "TTEventKit\/",
+    "8D6AF3F0851A5FE85CDC21A835EF23FD2B119DF1" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TTEventKit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TTEventKit.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:tanakasan2525\/TTEventKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18EC1EA0336CBD9374285E89E7DF8527516B6822"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:tanakasan2525\/mywork-of-mac.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8D6AF3F0851A5FE85CDC21A835EF23FD2B119DF1"
+    }
+  ]
+}

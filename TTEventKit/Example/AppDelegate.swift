@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Example
 //
-//  Copyright (c) 2014年 tanakasan2525. All rights reserved.
+//  Copyright (c) 2014年 tattn. All rights reserved.
 //
 
 import UIKit

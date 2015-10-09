@@ -2,7 +2,7 @@
 //  CalendarMonthView.swift
 //  SchedulerForStudent
 //
-//  Copyright (c) 2014年 tanakasan2525. All rights reserved.
+//  Copyright (c) 2014年 tattn. All rights reserved.
 //
 
 import UIKit
@@ -32,7 +32,7 @@ public class CalendarMonthView: UIView {
     /// カレンダー
     var calendar: CalendarView!
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("CalendarMonthView: init(coder)")
     }
     
@@ -85,8 +85,7 @@ public class CalendarMonthView: UIView {
         }
         
         // 予定を取得して追加
-        if let ev = EventDB.getEvents(month) {
-            let planFrame = CGRectMake(frame.minX, frame.minY, frame.width, frame.height)
+        if let ev = EventStore.getEvents(month) {
             for e in ev {
                 let date = e.startDate.getYearMonthDay()
                 dayViews[date.day - 1].addEvent(e)
@@ -123,14 +122,15 @@ public class CalendarMonthView: UIView {
 // Config
 //=================================
     
-    func setBackgroundColor(color: UIColor) {
-        for v in subviews as [UIView] {
-            v.backgroundColor = color
+    public override var backgroundColor: UIColor? {
+        didSet {
+            for v in subviews as [UIView] {
+                v.backgroundColor = backgroundColor
+            }
+            
+            super.backgroundColor = UIColor.clearColor()
         }
-        
-        super.backgroundColor = UIColor.clearColor()
     }
-    
     
     
 }

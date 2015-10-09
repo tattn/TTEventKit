@@ -1,11 +1,11 @@
 # TTEventKit
 
-A convenient event kit written by Swift.
+A convenient event kit written by Swift 2.0.
 
-<a target="_blank" href="https://raw.githubusercontent.com/tanakasan2525/TTEventKit/assets/calendar_anime.gif">
-<img width="30%" height="30%" alt="Calendar" src="https://raw.githubusercontent.com/tanakasan2525/TTEventKit/assets/calendar_anime.gif"></a>
+<a target="_blank" href="https://raw.githubusercontent.com/tattn/TTEventKit/assets/calendar_anime.gif">
+<img width="30%" height="30%" alt="Calendar" src="https://raw.githubusercontent.com/tattn/TTEventKit/assets/calendar_anime.gif"></a>
 
-[Calendar](https://raw.githubusercontent.com/tanakasan2525/TTEventKit/assets/calendar.png)
+[Calendar](https://raw.githubusercontent.com/tattn/TTEventKit/assets/calendar.png)
 
 ## Installation
 
@@ -13,7 +13,7 @@ Using TTEventKit in your project requires the following steps:
 
 In your top-level project directory, enter this:
 ```bash
-git submodule add https://github.com/tanakasan2525/TTEventKit.git
+git submodule add https://github.com/tattn/TTEventKit.git
 ```
 2. Open the `TTEventKit` folder, and drag `TTEventKit.xcodeproj` into the project navigator of your project.
 3. Select the project file from the project navigator, and select the target for where you want to add frameworks.
@@ -28,7 +28,7 @@ git submodule add https://github.com/tanakasan2525/TTEventKit.git
 ```swift
 import TTEventKit
 
-EventDB.requestAccess() { (granted) in
+EventStore.requestAccess() { (granted, error) in
     if granted {
         println("got permission")
     }
@@ -38,7 +38,7 @@ EventDB.requestAccess() { (granted) in
 ### Getting calendar events
 
 ```swift
-let events = EventDB.getEvents(Month(year: 2015, month: 1))
+let events = EventStore.getEvents(Month(year: 2015, month: 1))
 
 if events != nil {
     for e in events {
@@ -52,19 +52,21 @@ if events != nil {
 ### Adding calendar events
 
 ```swift
-EventDB.addEvent("new event", notes: "This is a test", startDate: NSDate(), endDate: NSDate())
+let start = NSDate()
+let end = NSDate(timeIntervalSinceNow: 60*60)
+EventStore.addEvent("new event", notes: "This is a test", startDate: start, endDate: end)
 ```
 
 ### Removing calendar events
 
 ```swift
 
-EventDB.removeEvents(Month(year: 2015, month: 1))
+EventStore.removeEvents(year: 2016, month: 1)
 
-EventDB.removeEvents(Month(year: 2015, month: 1), day: 1)
+EventStore.removeEvents(year: 2016, month: 1, day: 1)
 
-// remove events from 1/5/2015 to 1/19/2015
-EventDB.removeEvents(Month(year: 2015, month: 1), day: 5, length: 15)
+// remove events from 1/5/2016 to 1/19/2016
+EventStore.removeEvents(year: 2016, month: 1, day: 5, length: 15)
 ```
 
 ### Showing the view to edit an event
@@ -74,14 +76,14 @@ EventDB.removeEvents(Month(year: 2015, month: 1), day: 5, length: 15)
 EventUI.showEditView()
 
 // preset
-let event = EventDB.create()
+let event = EventStore.create()
 event.title = "new event"
 event.notes = "memo"
 EventUI.showEditView(event)
 
 // update
-let month = Month(year: 2015, month: 10)
-let event2 = EventDB.getEvents(month, day: 1)[0]
+let month = Month(year: 2016, month: 10)
+let event2 = EventStore.getEvents(month, day: 1)[0]
 EventUI.showEditView(event2)
 ```
 

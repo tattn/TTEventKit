@@ -2,7 +2,7 @@
 //  Date.swift
 //  TTEventKit
 //
-//  Copyright (c) 2014年 tanakasan2525. All rights reserved.
+//  Copyright (c) 2014年 tattn. All rights reserved.
 //
 
 import Foundation
@@ -26,11 +26,11 @@ public class Month {
     
     // その月の長さを取得
     public func length() -> Int {
-        return nscalendar.rangeOfUnit(.DayCalendarUnit, inUnit: .MonthCalendarUnit, forDate: nsdate).length
+        return nscalendar.rangeOfUnit(.Day, inUnit: .Month, forDate: nsdate).length
     }
     
     public func firstWeekday() -> Weekday {
-        let comp = nscalendar.components(.WeekdayCalendarUnit, fromDate: nsdate)
+        let comp = nscalendar.components(.Weekday, fromDate: nsdate)
         return Weekday(rawValue: comp.weekday - 1)!
     }
     
@@ -45,11 +45,7 @@ public class Month {
     
     // 今日の日付を取得
     public class func today() -> (month: Month, day: Int) {
-        let flags: NSCalendarUnit =
-            NSCalendarUnit.YearCalendarUnit |
-            NSCalendarUnit.MonthCalendarUnit |
-            NSCalendarUnit.DayCalendarUnit
-        let comps = nscalendar.components(flags, fromDate: NSDate())
+        let comps = nscalendar.components([.Year, .Month, .Day], fromDate: NSDate())
         return (Month(year: comps.year, month: comps.month), comps.day)
     }
     
@@ -77,7 +73,7 @@ public class Month {
     
     // NSDate型に変換
     private func toNSdate() -> NSDate {
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         return dateFormatter.dateFromString(String(format: "%04d/%02d/01", year, month))!
     }

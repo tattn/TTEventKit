@@ -2,7 +2,7 @@
 //  CalendarDayView.swift
 //  SchedulerForStudent
 //
-//  Copyright (c) 2014年 tanakasan2525. All rights reserved.
+//  Copyright (c) 2014年 tattn. All rights reserved.
 //
 
 import UIKit
@@ -23,10 +23,10 @@ public class CalendarDayView: UIView {
     var events = [EKEvent]()
     
     /// 選択されているか否か
-    var selected: Bool = false
+    var selected = false
     
     /// 今日か否か
-    var isToday: Bool = false
+    var isToday = false
     
     /// カレンダー
     var calendar: CalendarView
@@ -35,7 +35,7 @@ public class CalendarDayView: UIView {
 // UI
 //=================================
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("DayView: Init(coder)")
     }
 
@@ -66,7 +66,7 @@ public class CalendarDayView: UIView {
     
     override public func drawRect(rect: CGRect) {
         
-        var frameLine = UIBezierPath(rect: rect)
+        let frameLine = UIBezierPath(rect: rect)
         
         // 選択時に強調させる
         if selected {
@@ -74,7 +74,7 @@ public class CalendarDayView: UIView {
             frameLine.fill()
         }
         
-        var line = UIBezierPath()
+        let line = UIBezierPath()
         
         // 月の区切り線の描画
         drawSeparator(line, rect: rect)
@@ -179,12 +179,12 @@ public class CalendarDayView: UIView {
 //=================================
 // Touches
 //=================================
-    override public func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         
-        let monthView = superview as CalendarMonthView
+        let monthView = superview as! CalendarMonthView
         
-        println("\(monthView.month.year) \(monthView.month.month) \(dayLabel.text)")
+        print("\(monthView.month.year) \(monthView.month.month) \(dayLabel.text)")
         
         select()
     }

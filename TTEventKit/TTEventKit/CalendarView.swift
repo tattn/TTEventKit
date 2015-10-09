@@ -2,7 +2,7 @@
 //  CalendarView.swift
 //  SchedulerForStudent
 //
-//  Copyright (c) 2014年 tanakasan2525. All rights reserved.
+//  Copyright (c) 2014年 tattn. All rights reserved.
 //
 
 import UIKit
@@ -43,7 +43,7 @@ import EventKit
 // UI
 //=================================
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         readyCalendar()
     }
@@ -60,7 +60,7 @@ import EventKit
         
         // 曜日の表示
         for str in config.weekNotation {
-            var label = makeLabel(str)
+            let label = makeLabel(str)
 //            label.backgroundColor = UIColor.whiteColor()
 //            label.layer.masksToBounds = false
 //            label.layer.shadowOffset = CGSizeMake(5.0, 5.0)
@@ -136,8 +136,8 @@ import EventKit
     }
     
     func makeLabel(text: NSString, font: UIFont = UIFont.systemFontOfSize(12)) -> UILabel {
-        var label = UILabel()
-        label.text = text
+        let label = UILabel()
+        label.text = text as String
         label.font = font
         label.textColor = UIColor.blackColor()
         label.textAlignment = NSTextAlignment.Center
@@ -145,7 +145,7 @@ import EventKit
     }
     
     func makeScrollView() -> UIScrollView {
-        var scrollView = UIScrollView(frame: self.bounds)
+        let scrollView = UIScrollView(frame: self.bounds)
         scrollView.delegate = self
 //        scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -181,7 +181,7 @@ import EventKit
         scrollView.delegate = nil
         current = current.next()
         
-        var offset = scrollView.contentOffset.y - monthViews[1].frame.minY
+        let offset = scrollView.contentOffset.y - monthViews[1].frame.minY
         
         (monthViews[1], monthViews[2]) = (monthViews[2], monthViews[1])
         (monthViews[2], monthViews[0]) = (monthViews[0], monthViews[2])

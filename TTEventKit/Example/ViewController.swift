@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Example
 //
-//  Copyright (c) 2014年 tanakasan2525. All rights reserved.
+//  Copyright (c) 2014年 tattn. All rights reserved.
 //
 
 import UIKit
@@ -24,10 +24,10 @@ class ViewController: UIViewController, CalendarDelegate {
         let month = calendarView.current.month
         changedMonth(year, month: month)
         
-        EventDB.requestAccess() { (granted) in
+        EventDB.requestAccess() { (granted, error) in
             if !granted {
                 dispatch_async(dispatch_get_main_queue()) {
-                    let alert = UIAlertView(title: "エラー", message: "カレンダーへのアクセスを許可してください。", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK")
+                    let alert = UIAlertView(title: "Error", message: "カレンダーへのアクセスを許可してください。", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK")
                     alert.show()
                     
                 }
@@ -35,13 +35,13 @@ class ViewController: UIViewController, CalendarDelegate {
         }
         
         
-        let ev = EventDB.getEvents(Month(year: 2014, month: 12))
+        let ev = EventDB.getEvents(Month(year: 2016, month: 1))
         
         if ev  != nil {
             for e in ev {
-                println("Title \(e.title)")
-                println("startDate: \(e.startDate)")
-                println("endDate: \(e.endDate)")
+                print("Title \(e.title)")
+                print("startDate: \(e.startDate)")
+                print("endDate: \(e.endDate)")
             }
         }
         
@@ -55,7 +55,7 @@ class ViewController: UIViewController, CalendarDelegate {
         
         let event = EventDB.create()
         event.title = "元旦"
-        event.startDate = Month(year: 2015, month: 1).nsdate
+        event.startDate = Month(year: 2016, month: 1).nsdate
         event.endDate = event.startDate
         event.notes = "メモ"
         EventUI.showEditView(event)

@@ -2,7 +2,7 @@
 //  CalendarConfig.swift
 //  TTEventKit
 //
-//  Copyright (c) 2014年 tanakasan2525. All rights reserved.
+//  Copyright (c) 2014年 tattn. All rights reserved.
 //
 
 import Foundation
@@ -47,9 +47,9 @@ public class CalendarConfig {
 }
 
 extension UIColor {
-    class func fromHex (var hexStr : NSString, var alpha : CGFloat = 1.0) -> UIColor {
+    class func fromHex (var hexStr : NSString, alpha: CGFloat = 1.0) -> UIColor {
         hexStr = hexStr.stringByReplacingOccurrencesOfString("#", withString: "")
-        let scanner = NSScanner(string: hexStr)
+        let scanner = NSScanner(string: hexStr as String)
         var color: UInt32 = 0
         if scanner.scanHexInt(&color) {
             let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
