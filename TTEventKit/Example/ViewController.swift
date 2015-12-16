@@ -24,7 +24,7 @@ class ViewController: UIViewController, CalendarDelegate {
         let month = calendarView.current.month
         changedMonth(year, month: month)
         
-        EventDB.requestAccess() { (granted, error) in
+        EventStore.requestAccess() { (granted, error) in
             if !granted {
                 dispatch_async(dispatch_get_main_queue()) {
                     let alert = UIAlertView(title: "Error", message: "カレンダーへのアクセスを許可してください。", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK")
@@ -34,8 +34,7 @@ class ViewController: UIViewController, CalendarDelegate {
             }
         }
         
-        
-        let ev = EventDB.getEvents(Month(year: 2016, month: 1))
+        let ev = EventStore.getEvents(Month(year: 2017, month: 1))
         
         if ev  != nil {
             for e in ev {
@@ -53,9 +52,9 @@ class ViewController: UIViewController, CalendarDelegate {
 
     @IBAction func tappedAddButton(sender: UIBarButtonItem) {
         
-        let event = EventDB.create()
+        let event = EventStore.create()
         event.title = "元旦"
-        event.startDate = Month(year: 2016, month: 1).nsdate
+        event.startDate = Month(year: 2017, month: 1).nsdate
         event.endDate = event.startDate
         event.notes = "メモ"
         EventUI.showEditView(event)

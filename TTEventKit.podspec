@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TTEventKit"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "a very manageable EventKit library."
 
   s.homepage     = "https://github.com/tattn/TTEventKit"

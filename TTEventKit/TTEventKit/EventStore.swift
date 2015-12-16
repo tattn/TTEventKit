@@ -58,13 +58,25 @@ public struct EventStore {
 //=================================
     
     /// カレンダーにイベントを追加します。
+    public static func addEvent(title: String, notes: String, date: NSDate = NSDate()) {
+            let event = EKEvent(eventStore: store)
+            event.title = title
+            event.startDate = date
+            event.endDate = date
+            event.notes = notes
+            event.allDay = true
+            addEvent(event)
+    }
+    
+    /// カレンダーにイベントを追加します。
     public static func addEvent(title: String, notes: String,
-                                startDate: NSDate = NSDate(), endDate: NSDate = NSDate()) {
+        startDate: NSDate = NSDate(), endDate: NSDate = NSDate(), allDay: Bool = false) {
         let event = EKEvent(eventStore: store)
         event.title = title
         event.startDate = startDate
         event.endDate = endDate
         event.notes = notes
+        event.allDay = allDay
         addEvent(event)
     }
     
